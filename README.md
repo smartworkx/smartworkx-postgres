@@ -15,5 +15,9 @@ docker run -it --rm --volume=$(pwd):/scripts postgres psql -h 192.168.99.100 -p 
 - Service account json stored in the repo (not checked in)
 - Proxy password stored in keepass file
 - INSTANCE_CONNECTION_NAME = smartworkx-173909:europe-west1:smartworkx
-- 
+- Commands to run when creating cluster
+    - kubectl create secret generic cloudsql-instance-credentials \
+                         --from-file=credentials.json=service-account.json
+    - kubectl create secret generic cloudsql-db-credentials \
+             --from-literal=username=proxyuser --from-file=./password.txt
 
