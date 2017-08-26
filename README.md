@@ -18,6 +18,5 @@ docker run -it --rm --volume=$(pwd):/scripts postgres psql -h 192.168.99.100 -p 
 - Commands to run when creating cluster
     - kubectl create secret generic cloudsql-instance-credentials \
                          --from-file=credentials.json=service-account.json
-    - kubectl create secret generic cloudsql-db-credentials \
-             --from-literal=username=proxyuser --from-file=./password.txt
+    - kubectl create secret generic cloudsql-db-credentials --from-literal=username=$(cat ./username.txt) --from-literal=password=$(cat ./password.txt)
 
